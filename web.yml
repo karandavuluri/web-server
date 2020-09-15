@@ -5,8 +5,11 @@
     - name: Deploy html code
       git:
         repo: 'https://github.com/karandavuluri/web-server'
-        dest: /var/www/html/
+        dest: /home/ubuntu/
         version: integration
+      copy:
+        src: /home/ubuntu/web-server/index.html
+        dest: /var/www/html/  
 
 - hosts: preprod 
   become: True
@@ -14,8 +17,11 @@
     - name: Deploy html code
       git:
         repo: 'https://github.com/karandavuluri/web-server'
-        dest: /var/www/html/
+        dest: /home/ubuntu/
         version: preprod
+      copy:
+        src: /home/ubuntu/web-server/index.html
+        dest: /var/www/html/
 
 - hosts: prod
   become: True
@@ -23,6 +29,9 @@
     - name: Deploy html code
       git:
         repo: 'https://github.com/karandavuluri/web-server'
-        dest: /var/www/html/
+        dest: /home/ubuntu/
         version: master
+      copy:
+        src: /home/ubuntu/web-server/index.html
+        dest: /var/www/html/
 ...
