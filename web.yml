@@ -2,7 +2,8 @@
 - hosts: integration 
   become: True
   tasks:
-    - name: Deploy html code
+
+    - name: Deploy html code integration
       git:
         repo: 'https://github.com/karandavuluri/web-server'
         dest: /home/ubuntu/
@@ -14,7 +15,7 @@
 - hosts: preprod 
   become: True
   tasks:
-    - name: Deploy html code
+    - name: Deploy html code preprod
       git:
         repo: 'https://github.com/karandavuluri/web-server'
         dest: /home/ubuntu/
@@ -26,7 +27,7 @@
 - hosts: prod
   become: True
   tasks:
-    - name: Deploy html code
+    - name: Deploy html code prod
       git:
         repo: 'https://github.com/karandavuluri/web-server'
         dest: /home/ubuntu/
