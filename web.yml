@@ -5,12 +5,12 @@
     - name: integration Deploy
       git:
         repo: 'https://github.com/karandavuluri/web-server'
-        dest: /home/ubuntu/
-        version: integration
-    - name: copy integration  
-      copy:
-        src: home/ubuntu/web-server/index.html
         dest: /var/www/html/
+        version: integration
+    # - name: copy integration  
+    #   copy:
+    #     src: home/ubuntu/web-server/index.html
+    #     dest: /var/www/html/
 
 - hosts: preprod 
   become: True
