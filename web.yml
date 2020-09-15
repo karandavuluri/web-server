@@ -37,4 +37,4 @@
       copy:
         src: /home/ubuntu/web-server/index.html
         dest: /var/www/html/
-...
+---
