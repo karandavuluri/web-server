@@ -11,15 +11,6 @@
 - hosts: preprod 
   become: True
   tasks:
-    - name: Install packages
-      sudo:
-        name: "httpd"
-        state: "present"
-    - name: Start Apache server
-      service:
-        name: httpd
-        state: started
-        enabled: True
     - name: Deploy html code
       git:
         repo: 'https://github.com/karandavuluri/web-server'
@@ -29,15 +20,6 @@
 - hosts: prod
   become: True
   tasks:
-    - name: Install packages
-      sudo:
-        name: "httpd"
-        state: "present"
-    - name: Start Apache server
-      service:
-        name: httpd
-        state: started
-        enabled: True
     - name: Deploy html code
       git:
         repo: 'https://github.com/karandavuluri/web-server'
