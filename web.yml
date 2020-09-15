@@ -1,9 +1,9 @@
 ---
-- hosts: webservers 
+- hosts: integration 
   become: True
   tasks:
     - name: Install packages
-      yum:
+      sudo:
         name: "httpd"
         state: "present"
     - name: Start Apache server
@@ -11,8 +11,45 @@
         name: httpd
         state: started
         enabled: True
-    - name: Deploy static website
-      copy:
-        src: index.html
+    - name: Deploy html code
+      git:
+        repo: 'https://github.com/karandavuluri/web-server'
         dest: /var/www/html/
+        version: integration
+
+- hosts: preprod 
+  become: True
+  tasks:
+    - name: Install packages
+      sudo:
+        name: "httpd"
+        state: "present"
+    - name: Start Apache server
+      service:
+        name: httpd
+        state: started
+        enabled: True
+    - name: Deploy html code
+      git:
+        repo: 'https://github.com/karandavuluri/web-server'
+        dest: /var/www/html/
+        version: preprod
+
+- hosts: prod
+  become: True
+  tasks:
+    - name: Install packages
+      sudo:
+        name: "httpd"
+        state: "present"
+    - name: Start Apache server
+      service:
+        name: httpd
+        state: started
+        enabled: True
+    - name: Deploy html code
+      git:
+        repo: 'https://github.com/karandavuluri/web-server'
+        dest: /var/www/html/
+        version: master
 ...
