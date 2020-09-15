@@ -4,13 +4,14 @@
   tasks:
     - name: Install packages
       apt:
-        name: "httpd"
+        name: apache2
+        update_cache: yes
         state: "present"
-    - name: Start Apache server
-      service:
-        name: httpd
-        state: started
-        enabled: True
+    # - name: Start Apache server
+    #   apache2_module:
+    #     name: httpd
+    #     state: started
+    #     enabled: True
     - name: ensure a directory exists
       file:
         path: $HOME/project
