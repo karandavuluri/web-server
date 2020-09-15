@@ -33,7 +33,7 @@
         repo: 'https://github.com/karandavuluri/web-server'
         dest: /home/ubuntu/
         version: master
-    -name: copy prod
+    - name: copy prod
       copy:
         src: /home/ubuntu/web-server/index.html
         dest: /var/www/html/
