@@ -2,15 +2,14 @@
 - hosts: integration 
   become: True
   tasks:
-
-    - name: Deploy html code integration
+    - name: integration Deploy
       git:
         repo: 'https://github.com/karandavuluri/web-server'
-        dest: /home/ubuntu/
+        dest: /home/ubuntu
         version: integration
       copy:
-        src: /home/ubuntu/web-server/index.html
-        dest: /var/www/html/  
+        src: home/ubuntu/web-server/index.html
+        dest: /var/www/html/
 
 - hosts: preprod 
   become: True
