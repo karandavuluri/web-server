@@ -1,8 +1,16 @@
 ---
 - hosts: integration 
   become: True
-  sudo_user: root
   tasks:
+    - name: Install packages
+      yum:
+        name: "httpd"
+        state: "present"
+    - name: Start Apache server
+      service:
+        name: httpd
+        state: started
+        enabled: True
     - name: ensure a directory exists
       file:
         path: $HOME/project
