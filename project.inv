@@ -1,0 +1,9 @@
+[integration]
+172.31.85.41 ansible_user=ubuntu
+
+[preprod]
+172.31.34.181 ansible_user=ubuntu 
+
+[prod]
+172.31.78.31 ansible_user=ubuntu 
+172.31.18.67 ansible_user=ubuntu 
