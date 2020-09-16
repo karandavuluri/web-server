@@ -1,5 +1,5 @@
 ---
-- hosts: integration 
+- hosts: prod 
   become: True
   tasks:
     - name: Install packages
@@ -16,34 +16,8 @@
     #     repo: 'https://github.com/karandavuluri/web-server'
     #     dest: $HOME/project
     #     version: integration
-    - name: copy integration  
+    - name: copy prod  
       copy:
         src: index.html
-        dest: /var/www/html/
-
-- hosts: preprod 
-  become: True
-  tasks:
-    - name: Deploy html code preprod
-      git:
-        repo: 'https://github.com/karandavuluri/web-server'
-        dest: /home/ubuntu/
-        version: preprod
-    - name: copy preprod    
-      copy:
-        src: /home/ubuntu/web-server/index.html
-        dest: /var/www/html/
-
-- hosts: prod
-  become: True
-  tasks:
-    - name: Deploy html code prod
-      git:
-        repo: 'https://github.com/karandavuluri/web-server'
-        dest: /home/ubuntu/
-        version: master
-    - name: copy prod
-      copy:
-        src: /home/ubuntu/web-server/index.html
-        dest: /var/www/html/
+        dest: /var/www/html/       
 ...
