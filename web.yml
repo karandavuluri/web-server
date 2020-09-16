@@ -7,24 +7,18 @@
         name: apache2
         update_cache: yes
         state: "present"
-    # - name: Start Apache server
-    #   apache2_module:
-    #     name: httpd
-    #     state: started
-    #     enabled: True
-    - name: ensure a directory exists
-      file:
-        path: $HOME/project
-        state: directory
-    - name: integration Deploy
-      git:
-        repo: 'https://github.com/karandavuluri/web-server'
-        dest: $HOME/project
-        version: integration
+    # - name: ensure a directory exists
+    #   file:
+    #     path: $HOME/project
+    #     state: directory
+    # - name: integration Deploy
+    #   git:
+    #     repo: 'https://github.com/karandavuluri/web-server'
+    #     dest: $HOME/project
+    #     version: integration
     - name: copy integration  
       copy:
-        become_user: root
-        src: $HOME/project/web-server/index.html
+        src: index.html
         dest: /var/www/html/
 
 - hosts: preprod 
