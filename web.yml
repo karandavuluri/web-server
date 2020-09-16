@@ -1,0 +1,14 @@
+---
+- hosts: preprod 
+  become: True
+  tasks:
+    - name: Install packages
+      apt:
+        name: apache2
+        update_cache: yes
+        state: "present"
+    - name: copy integration  
+      copy:
+        src: index.html
+        dest: /var/www/html/
+...
