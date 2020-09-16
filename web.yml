@@ -7,7 +7,7 @@
         name: apache2
         update_cache: yes
         state: "present"
-    - name: copy integration  
+    - name: copy preprod  
       copy:
         src: index.html
         dest: /var/www/html/
